@@ -42,6 +42,6 @@ npm run dev
 [Flappy Birds Color Palette](https://www.pixilart.com/palettes/flappy-bird-33817)
 
 ## TODO
-Add savign and loading of the birds
+Add saving and loading of the birds
 
    
