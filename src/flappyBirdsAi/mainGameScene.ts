@@ -283,37 +283,49 @@ export default class MainGameScene extends THREE.Scene {
     let index: number = 0;
     let r: number = Math.random();
 
+    // while random number is greater than 0
     while (r > 0) {
+      // if birds are more than 0
       if (this.savedBirds.length > 0) {
+        // if there is a bird
         if (typeof this.savedBirds[index] === "undefined") continue;
 
+        // minus random from fitness
         r = r - this.savedBirds[index].getFitness();
-
+        // more to the next bird
         index++;
+        // if index goes over ttthe bird lengtth
         if (index > this.savedBirds.length - 1) break;
       }
     }
     index--;
 
+    // index is more than the snake length, make index to the length of bird
     if (index >= this.savedBirds.length) index = this.savedBirds.length - 1;
     else if (index < 0) index = 0;
 
     let bird: any = this.savedBirds[index];
 
+    // remove the save bird
     this.savedBirds.splice(index, 1);
 
+    // savign the best bird
     if (this.saveBest) {
       // bird.save(saveBestType);
       this.saveBest = true;
     }
 
+    // child of the bird
     var child;
 
+    // make a new bird
     if (model) child = new Bird(bird.getBirdBrain(), null, model);
     else child = new Bird(bird.getBirdBrain());
 
+    // mutate the bird
     child.mutate();
 
+    // return the bird
     return child;
   }
 }
