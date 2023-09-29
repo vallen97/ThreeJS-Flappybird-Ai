@@ -2,7 +2,7 @@ import * as THREE from "three";
 import Pipe from "./pipes";
 import Bird from "./bird";
 
-export default class MainGameScene extends THREE.Scene {
+export default class FlappyBirdsGameScene extends THREE.Scene {
   //  variables used through the class
   private readonly camera: THREE.PerspectiveCamera;
   private readonly keyDown = new Set<string>();

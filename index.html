@@ -5,9 +5,34 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+    <style>
+      section {
+        position: relative;
+        /* width: 100%; */
+        /* border: 1px solid; */
+      }
+      canvas {
+        display: inline;
+      }
+      div {
+        float: right;
+        z-index: 100;
+      }
+      button {
+        display: inline;
+      }
+    </style>
   </head>
-  <body>
-    <canvas id="app"></canvas>
+  <body style="position: relative">
+    <section>
+      <div>
+        <button id="btn-play">Play Game</button>
+        <button id="btn-play-ai">AI Play Game</button>
+      </div>
+
+      <canvas id="app"></canvas>
+    </section>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

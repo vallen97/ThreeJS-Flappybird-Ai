@@ -1,6 +1,6 @@
 // import * as tf from "@tensorflow/tfjs";
-import * as tf from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-backend-webgl';
+import * as tf from "@tensorflow/tfjs";
+import "@tensorflow/tfjs-backend-webgl";
 
 export class NeuralNetwork {
   private model: any;
@@ -9,6 +9,7 @@ export class NeuralNetwork {
   private output_nodes: any;
 
   constructor(a: any, b: any, c: any, d?: any) {
+    tf.setBackend("webgl");
     if (a instanceof tf.Sequential) {
       this.model = a;
       this.input_nodes = b;
@@ -135,10 +136,10 @@ export class NeuralNetwork {
     // save in browser or download JSON to users computer
     switch (type) {
       case 0:
-        saveResult = await this.model.save('localstorage://best_snake');
+        saveResult = await this.model.save("localstorage://best_snake");
         break;
       case 1:
-        saveResult = await this.model.save('downloads://best_snake');
+        saveResult = await this.model.save("downloads://best_snake");
         break;
       default:
         break;
@@ -162,14 +163,14 @@ export class NeuralNetwork {
     const hidden = tf.layers.dense({
       units: this.hidden_nodes,
       inputShape: [this.input_nodes],
-      activation: 'sigmoid', // all hidden values are between 0-1
+      activation: "sigmoid", // all hidden values are between 0-1
     });
     // add hidden and input nodes to model
     model.add(hidden);
     // make output nodes
     const output = tf.layers.dense({
       units: this.output_nodes,
-      activation: 'softmax', // all output values equal to 1
+      activation: "softmax", // all output values equal to 1
     });
     // add output nodes to model
     model.add(output);
